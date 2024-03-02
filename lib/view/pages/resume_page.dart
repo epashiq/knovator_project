@@ -23,8 +23,16 @@ class ResumePage extends StatelessWidget {
                   themeNoitfier.value ? Icons.light_mode : Icons.dark_mode))
         ],
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){},
-      child: const Icon(Icons.add),
+      bottomNavigationBar: TextButton(
+        style: TextButton.styleFrom(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            backgroundColor: Colors.purple),
+        onPressed: () {},
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
