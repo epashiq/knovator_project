@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:knovator_project/controller/resume_provider.dart';
+import 'package:knovator_project/view/pages/add_resume_page.dart';
 import 'package:knovator_project/view/pages/resume_view_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,6 +15,14 @@ class ResumePage extends ConsumerWidget {
       themeNoitfier.value = !themeNoitfier.value;
       (await SharedPreferences.getInstance())
           .setBool('theme', themeNoitfier.value);
+    }
+
+    void addNewResume() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const AddResumePage(),
+          ));
     }
 
     return Scaffold(
@@ -42,7 +51,7 @@ class ResumePage extends ConsumerWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             backgroundColor: Colors.purple),
-        onPressed: () {},
+        onPressed: addNewResume,
         child: const Icon(
           Icons.add,
           color: Colors.white,

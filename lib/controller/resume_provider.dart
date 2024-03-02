@@ -30,4 +30,22 @@ class Resume extends _$Resume {
 
     return [];
   }
+
+   void addResume(ResumeModel resume) async {
+    (await SharedPreferences.getInstance())
+        .setString(resume.name, jsonEncode(resume.toJson()));
+    state = [...state, resume];
+  }
+
+   void editResume(ResumeModel resume, int index) async {
+    final sharedPrefs = await SharedPreferences.getInstance();
+
+    sharedPrefs.remove(state[index].name);
+    sharedPrefs.setString(resume.name, jsonEncode(resume.toJson()));
+
+    final updatedResumeList = [...state];
+    updatedResumeList[index] = resume;
+
+    state = updatedResumeList;
+  }
 }
