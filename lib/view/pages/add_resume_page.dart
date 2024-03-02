@@ -109,6 +109,7 @@ class AddResumePage extends HookConsumerWidget {
             TextButton(
               onPressed: () {
                 final title = titleController.text;
+                
                 saveResume(title);
               },
               child: const Text('Save'),

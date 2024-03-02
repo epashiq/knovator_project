@@ -25,6 +25,16 @@ class ResumePage extends ConsumerWidget {
           ));
     }
 
+    void viewResume(int index) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ViewResumePage(
+              index: index,
+            ),
+          ));
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -41,20 +51,23 @@ class ResumePage extends ConsumerWidget {
         itemBuilder: (context, index) {
           final resume = ref.watch(resumeProvider)[index];
           return ListTile(
-            onTap: () => const ViewResumePAge(),
+            onTap: () => viewResume(index),
             title: Text(resume.name),
           );
         },
       ),
-      bottomNavigationBar: TextButton(
-        style: TextButton.styleFrom(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            backgroundColor: Colors.purple),
-        onPressed: addNewResume,
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
+      bottomNavigationBar: Expanded(
+        child: TextButton(
+          style: TextButton.styleFrom(
+              
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              backgroundColor: Colors.purpleAccent),
+          onPressed: addNewResume,
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
         ),
       ),
     );

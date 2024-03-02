@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'dart:developer';
 
@@ -18,8 +17,8 @@ class Resume extends _$Resume {
 
       for (final key in keys) {
         try {
-          resumeList.add(
-              ResumeModel.fromJson(jsonDecode(prefs.getString(key)!)));
+          resumeList
+              .add(ResumeModel.fromJson(jsonDecode(prefs.getString(key)!)));
         } catch (e) {
           log(e.toString());
         }
@@ -31,13 +30,13 @@ class Resume extends _$Resume {
     return [];
   }
 
-   void addResume(ResumeModel resume) async {
+  void addResume(ResumeModel resume) async {
     (await SharedPreferences.getInstance())
         .setString(resume.name, jsonEncode(resume.toJson()));
     state = [...state, resume];
   }
 
-   void editResume(ResumeModel resume, int index) async {
+  void editResume(ResumeModel resume, int index) async {
     final sharedPrefs = await SharedPreferences.getInstance();
 
     sharedPrefs.remove(state[index].name);
@@ -47,5 +46,10 @@ class Resume extends _$Resume {
     updatedResumeList[index] = resume;
 
     state = updatedResumeList;
+  }
+
+  void removeResume(int index) async {
+    (await SharedPreferences.getInstance()).remove(state[index].name);
+    state = [...state]..removeAt(index);
   }
 }

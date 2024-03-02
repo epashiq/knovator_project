@@ -36,25 +36,6 @@ class ResumeFormWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Name',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 60,
-              width: MediaQuery.sizeOf(context).width,
-              child: TextField(
-                controller: titleController,
-                decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    hintText: 'Enter Your Name'),
-              ),
-            ),
             const SizedBox(
               height: 10,
             ),
